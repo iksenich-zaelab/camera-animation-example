@@ -1,0 +1,26 @@
+{
+  "name": "animation-wp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "webpack": "webpack --config webpack.config.js --mode=production",
+    "build": "webpack --config webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.27.4",
+    "@babel/preset-env": "^7.27.2",
+    "@tweenjs/tween.js": "^25.0.0",
+    "babel-loader": "^10.0.0",
+    "express": "^5.1.0",
+    "webpack": "^5.99.9",
+    "webpack-dev-middleware": "^7.4.2"
+  },
+  "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447",
+  "devDependencies": {
+    "webpack-cli": "^6.0.1"
+  }
+}
