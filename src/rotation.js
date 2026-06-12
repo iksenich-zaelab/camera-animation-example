@@ -47,7 +47,7 @@ function getRotationKeyframe(name) {
   return frame;
 }
 
-function getLookAtCenterInterpolator(nameFrom, nameTo) {
+function getLookAtCenterInterpolator(objectId) {
   const THREE = api.THREE;
   const point = new THREE.Group();
   point.rotation.order = 'ZYX';
@@ -55,9 +55,26 @@ function getLookAtCenterInterpolator(nameFrom, nameTo) {
   const scene = root.configurator.player.modules.translator.scene;
   scene.add(point);
 
+  // const cameraEuler = new THREE.Euler();
+  // const cameraMatrix = new THREE.Matrix4();
+
   return {
     from: 0, to: 1,
     update(rotation, translation) {
+      // const up = new THREE.Vector3(0, 1, 0);
+      // const objectRotation = api.scene.get({ id: objectId, plug: "Transform", property: "rotation" });
+      // const objectRotationOrder = api.scene.get({ id: objectId, plug: "Transform", property: "rotationOrder" });
+      // cameraEuler.set(
+      //   d2r(objectRotation.x),
+      //   d2r(objectRotation.y),
+      //   d2r(objectRotation.z),
+      //   objectRotationOrder,
+      // );
+      // cameraMatrix.makeRotationFromEuler(cameraEuler);
+      // up.applyMatrix4(cameraMatrix).normalize();
+      // point.up.set(up.x, up.y, up.z);
+      // console.log(">>>up", objectRotation);
+
       point.lookAt(
         translation.x,
         translation.y,
@@ -72,11 +89,11 @@ function getLookAtCenterInterpolator(nameFrom, nameTo) {
   }
 }
 
-export function getRotationInterpolator(nameFrom, nameTo) {
+export function getRotationInterpolator(nameFrom, nameTo, objectId) {
   switch (api.configuration.RotationInterpolation) {
     case "Quaternion":
       return getRotationQuaternionInterpolator(nameFrom, nameTo);
     case "LookAt":
-      return getLookAtCenterInterpolator();
+      return getLookAtCenterInterpolator(objectId);
   }
 }

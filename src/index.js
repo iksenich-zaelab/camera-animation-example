@@ -3,8 +3,8 @@ import {getTranslationInterpolator} from "./translation";
 import {getRotationInterpolator} from "./rotation";
 
 function createAnimation(id, nameFrom, nameTo, duration) {
-  const translationInterpolator = getTranslationInterpolator(nameFrom, nameTo);
-  const rotationInterpolator = getRotationInterpolator(nameFrom, nameTo);
+  const translationInterpolator = getTranslationInterpolator(nameFrom, nameTo, id);
+  const rotationInterpolator = getRotationInterpolator(nameFrom, nameTo, id);
 
   return new TWEEN.Tween({ translation: translationInterpolator.from, rotation: rotationInterpolator.from })
     .to({ translation: translationInterpolator.to, rotation: rotationInterpolator.to }, duration)
@@ -13,7 +13,6 @@ function createAnimation(id, nameFrom, nameTo, duration) {
       const translation = translationInterpolator.update(value.translation);
       const rotation = rotationInterpolator.update(value.rotation, translation);
 
-      console.log(value, translation, rotation);
       api.scene.set({ id, plug: 'Transform', property: 'translation' }, translation);
       api.scene.set({ id, plug: 'Transform', property: 'rotation' }, rotation);
     });
