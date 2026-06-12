@@ -3,13 +3,11 @@ function sgn(a) {
 }
 
 export function cartesianToSpherical({ x, y, z }) {
-
-  console.log(x,y,z);
   const r = Math.sqrt(x * x + y * y + z * z);
   return {
     r,
     theta: Math.acos(z / r),
-    phi: sgn(y) * Math.acos(x / Math.sqrt(x * x + y * y)) || 0,
+    phi: (sgn(y) * Math.acos(x / Math.sqrt(x * x + y * y)) || 0),
   }
 }
 
@@ -22,7 +20,6 @@ export function sphericalToCartesian({ r, theta, phi }) {
 }
 
 export function cartesianToCylindrical({ x, y, z }) {
-  console.log(x,y,z);
   const r = Math.sqrt(x * x + z * z);
 
   function phi(r, y) {

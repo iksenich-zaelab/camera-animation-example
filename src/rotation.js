@@ -43,7 +43,7 @@ function getRotationKeyframe(name) {
     api.scene.get({ name: name, plug: "Transform", property: "rotationOrder" }),
   )
 
-  frame.quaternion.setFromEuler(frame.euler, euler.order);
+  frame.quaternion.setFromEuler(frame.euler);
   return frame;
 }
 
