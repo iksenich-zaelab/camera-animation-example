@@ -57,3 +57,11 @@ export function cylindricalToCartesian({ r, y, phi }) {
 }
 
 const lerp = (a, b, t) => (1 - t) * a + t * b;
+
+export function r2d(r) {
+  return r * 180 / Math.PI;
+}
+
+export function d2r(r) {
+  return r / 180 * Math.PI;
+}
